@@ -30,34 +30,38 @@ function display(response) {
   var authorX;
   var scorex;
   var scoreImage;
+  var commentsX;
+  var commentLink;
+  var numComments;
+
   for(var i = 0; i < response.data.children.length; i++) {
     titleX = document.createElement("h2");
     authorX = document.createElement("h4");
     postX = document.createElement("div");
+    postX.className = "post";
     scoreImage = document.createElement("img");
+    scoreImage.src = "cigarImage.jpg";
+    scoreImage.height = "25";
+    scoreImage.width = "25";
     scoreX = document.createElement("div");
+    scoreX.className = "score";
+    commentsX = document.createElement("div");
+    commentLink = response.data.children[i].data.permalink;
+    numComments = response.data.children[i].data.num_comments;
 
     titleX.innerHTML = response.data.children[i].data.title;
     authorX.innerHTML = "Author: " + response.data.children[i].data.author;
     postX.innerHTML = response.data.children[i].data.selftext + "<br>";
-    scoreImage.src = "cigarImage.jpg";
-    scoreImage.height = "25";
-    scoreImage.width = "25";
-
-    scoreX.innerHTML = 'score: ' + '<img src = "cigarImage.jpg" height = "25" width = "25">' + 'x' + response.data.children[i].data.score;
-    // for(var j = 0; j < response.data.children[i].data.score; j++) {
-    //   scoreX.appendChild(scoreImage);
-    //   scoreImage = document.createElement("img");
-    //   scoreImage.src = "cigarImage.jpg";
-    //   scoreImage.height = "25";
-    //   scoreImage.width = "25";
-    // }
+    scoreX.innerHTML = 'score: ' +
+                        '<img src = "cigarImage.jpg" ' +
+                        'height = "25" width = "25">' +
+                        'x' +
+                        response.data.children[i].data.score;
 
     mainPage.appendChild(titleX);
     mainPage.appendChild(authorX);
     mainPage.appendChild(scoreX);
     mainPage.appendChild(postX);
-
   }
 }
 
