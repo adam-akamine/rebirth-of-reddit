@@ -26,50 +26,105 @@ httpRequest.send(null);
 function display(response) {
   var mainPage = document.getElementById("mainPage");
   var data;
+  var thread;
   var postX;
   var titleX;
   var authorX;
   var scorex;
-  var scoreImage;
   var commentsX;
+  var dateCreatedX;
+  var showMoreX;
+  var postDivX;
+
+  var scoreImage;
   var commentLink;
   var numComments;
+  var dateCreated;
+
 
   for(var i = 0; i < response.data.children.length; i++) {
     data = response.data.children[i].data;
+    thread = document.createElement("div");
     titleX = document.createElement("h2");
     authorX = document.createElement("h4");
     postX = document.createElement("div");
-    postX.className = "post";
     scoreImage = document.createElement("img");
+    scoreX = document.createElement("div");
+    commentsX = document.createElement("div");
+    dateCreatedX = document.createElement("div");
+    showMoreX = document.createElement("button");
+    postDivX = document.createElement("div");
+
+    thread.className = "thread";
+    showMoreX.type = "show more";
+    postX.className = "post";
     scoreImage.src = "cigarImage.jpg";
     scoreImage.height = "25";
     scoreImage.width = "25";
-    scoreX = document.createElement("div");
     scoreX.className = "score";
-    commentsX = document.createElement("div");
     commentsX.className = "comments";
     commentLink = data.url;
     numComments = data.num_comments;
+    dateCreated = getDate(data.created_utc);
 
     titleX.innerHTML = data.title;
     authorX.innerHTML = "Author: " + data.author;
     postX.innerHTML = data.selftext;
     scoreX.innerHTML = 'score: ' +
-                        '<img src = "cigarImage.jpg" ' +
+                        '<img src = "cigar.png" ' +
                         'height = "25" width = "25">' +
                         'x' +
                         data.score;
-    commentsX.innerHTML = '<a href = "' + commentLink + '">' + numComments + ' posts</a>';
+    commentsX.innerHTML = '<a href = "' + commentLink + '">' + numComments + ' comments</a>';
+    dateCreatedX.innerHTML = "created: " + dateCreated;
+    showMoreX.onclick = togglePost(data, postDivX);
 
-    mainPage.appendChild(titleX);
-    mainPage.appendChild(authorX);
-    mainPage.appendChild(scoreX);
-    mainPage.appendChild(postX);
-    mainPage.appendChild(commentsX);
+    // mainPage.appendChild(titleX);
+    // mainPage.appendChild(authorX);
+    // mainPage.appendChild(dateCreatedX);
+    // mainPage.appendChild(scoreX);
+    // mainPage.appendChild(showMoreX);
+    // mainPage.appendChild(postX);
+    // mainPage.appendChild(commentsX);
+
+    mainPage.appendChild(thread);
+    thread.appendChild(titleX);
+    thread.appendChild(authorX);
+    thread.appendChild(dateCreatedX);
+    thread.appendChild(scoreX);
+    thread.appendChild(showMoreX);
+    thread.appendChild(postX);
+    thread.appendChild(commentsX);
   }
 }
 
 function sanityCheck() {
   console.log("Sanity Check Pass.");
+}
+
+function addAttributes(element, attributes){
+  if(typeof attributes === "object"){
+    Object.keys(attributes).forEach(function(attribute){
+      element[attribute] = attributes[attribute];
+    });
+  }else{
+    throw new TypeError('attributes must be an Object');
+  }
+}
+
+function getDate(timestamp) {
+  var date = new Date(timestamp * 1000);
+  return date;
+}
+
+function togglePost(data, postdiv) {
+  console.log("button pressed");
+  var post = data.selftext;
+  if(postdiv.style.display == 'block') {
+    postdiv.innerHTML = post;
+    postdiv.style.display = 'none';
+  }
+  else {
+    postdiv.style.display = 'block';
+  }
 }
