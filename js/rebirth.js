@@ -77,15 +77,17 @@ function display(response) {
                         data.score;
     commentsX.innerHTML = '<a href = "' + commentLink + '">' + numComments + ' comments</a>';
     dateCreatedX.innerHTML = "created: " + dateCreated;
-    showMoreX.onclick = togglePost(data, postDivX);
-
-    // mainPage.appendChild(titleX);
-    // mainPage.appendChild(authorX);
-    // mainPage.appendChild(dateCreatedX);
-    // mainPage.appendChild(scoreX);
-    // mainPage.appendChild(showMoreX);
-    // mainPage.appendChild(postX);
-    // mainPage.appendChild(commentsX);
+    postDivX.innerHTML = data.selftext;
+    postDivX.style.display = 'none';
+    showMoreX.onclick = function (postDivX) {
+      if(postDivX.style.display === 'block') {
+        postDivX.style.display = 'none';
+      }
+      else {
+        console.log("assigning block style.");
+        postDivX.style.display = 'block';
+      }
+    };
 
     mainPage.appendChild(thread);
     thread.appendChild(titleX);
@@ -117,14 +119,12 @@ function getDate(timestamp) {
   return date;
 }
 
-function togglePost(data, postdiv) {
-  console.log("button pressed");
-  var post = data.selftext;
+function togglePost(postdiv) {
   if(postdiv.style.display == 'block') {
-    postdiv.innerHTML = post;
     postdiv.style.display = 'none';
   }
   else {
+    console.log("assigning block style.");
     postdiv.style.display = 'block';
   }
 }
