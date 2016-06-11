@@ -14,5 +14,9 @@ h4{
 }
 
 .post{
-  padding:25px;
+  padding:25px 25px 0px 25px;
+}
+
+.comments{
+  padding:0px 25px 25px 25px;
 }

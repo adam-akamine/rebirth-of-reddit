@@ -25,6 +25,7 @@ httpRequest.send(null);
 
 function display(response) {
   var mainPage = document.getElementById("mainPage");
+  var data;
   var postX;
   var titleX;
   var authorX;
@@ -35,6 +36,7 @@ function display(response) {
   var numComments;
 
   for(var i = 0; i < response.data.children.length; i++) {
+    data = response.data.children[i].data;
     titleX = document.createElement("h2");
     authorX = document.createElement("h4");
     postX = document.createElement("div");
@@ -46,22 +48,25 @@ function display(response) {
     scoreX = document.createElement("div");
     scoreX.className = "score";
     commentsX = document.createElement("div");
-    commentLink = response.data.children[i].data.permalink;
-    numComments = response.data.children[i].data.num_comments;
+    commentsX.className = "comments";
+    commentLink = data.url;
+    numComments = data.num_comments;
 
-    titleX.innerHTML = response.data.children[i].data.title;
-    authorX.innerHTML = "Author: " + response.data.children[i].data.author;
-    postX.innerHTML = response.data.children[i].data.selftext + "<br>";
+    titleX.innerHTML = data.title;
+    authorX.innerHTML = "Author: " + data.author;
+    postX.innerHTML = data.selftext;
     scoreX.innerHTML = 'score: ' +
                         '<img src = "cigarImage.jpg" ' +
                         'height = "25" width = "25">' +
                         'x' +
-                        response.data.children[i].data.score;
+                        data.score;
+    commentsX.innerHTML = '<a href = "' + commentLink + '">' + numComments + ' posts</a>';
 
     mainPage.appendChild(titleX);
     mainPage.appendChild(authorX);
     mainPage.appendChild(scoreX);
     mainPage.appendChild(postX);
+    mainPage.appendChild(commentsX);
   }
 }
 
