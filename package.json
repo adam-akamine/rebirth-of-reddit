@@ -1,0 +1,25 @@
+{
+  "name": "rebirth-of-reddit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kekuso/rebirth-of-reddit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kekuso/rebirth-of-reddit/issues"
+  },
+  "homepage": "https://github.com/kekuso/rebirth-of-reddit#readme"
+}
