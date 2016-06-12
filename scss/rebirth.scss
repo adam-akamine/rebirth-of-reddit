@@ -27,13 +27,23 @@ a {
   padding: 0; }
 
 .post {
+  display: block;
   padding: 5px 5px 5px 5px;
   border: 1px solid lightgray;
-  /*background-color: #2e2e1f;*/
   background-color: #2d2d2d;
   color: lightgray;
   -moz-border-radius: 5px;
-  -webkit-border-radius: 5px; }
+  -webkit-border-radius: 5px;
+}
 
 .comments {
   padding: 0px 0px 25px 0px; }
+
+button {
+  //background-color: #4CAF50;
+  color: black;
+  font-size: 8px;
+  cursor: pointer;
+  width: 100px;
+  height: 20px;
+}

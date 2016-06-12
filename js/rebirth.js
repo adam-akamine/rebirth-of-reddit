@@ -56,7 +56,6 @@ function display(response) {
     postDivX = document.createElement("div");
 
     thread.className = "thread";
-    postX.className = "post";
     postDivX.className = "post";
     scoreImage.src = "cigarImage.jpg";
     scoreImage.height = "25";
@@ -66,6 +65,7 @@ function display(response) {
     commentLink = data.url;
     numComments = data.num_comments;
     dateCreated = getDate(data.created_utc);
+    showMoreX.innerHTML = "show more";
 
     titleX.innerHTML = data.title;
     authorX.innerHTML = "Author: " + data.author;
@@ -78,16 +78,8 @@ function display(response) {
     commentsX.innerHTML = '<a href = "' + commentLink + '">' + numComments + ' comments</a>';
     dateCreatedX.innerHTML = "created: " + dateCreated;
     postDivX.innerHTML = data.selftext;
-    postDivX.style.display = 'none';
     showMoreX.onclick = function () {
-      if(postDivX.style.display == 'block') {
-        console.log("removing block.");
-        postDivX.style.display = 'none';
-      }
-      else {
-        console.log("assigning block style.");
-        postDivX.style.display = 'block';
-      }
+      togglePost(postDivX);
     };
 
     mainPage.appendChild(thread);
@@ -96,8 +88,9 @@ function display(response) {
     thread.appendChild(dateCreatedX);
     thread.appendChild(scoreX);
     thread.appendChild(showMoreX);
-    thread.appendChild(postX);
+    //thread.appendChild(postX);
     thread.appendChild(postDivX);
+    //console.log("Appended " + postDivX.innerHTML);
     thread.appendChild(commentsX);
   }
 }
@@ -126,5 +119,3 @@ function togglePost(postdiv) {
     postdiv.style.display = 'block';
   }
 }
-
-console.log("hello");
