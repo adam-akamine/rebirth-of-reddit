@@ -1,7 +1,9 @@
 .thread {
   padding: 25px 25px 0px 25px;
   border-bottom: 2px solid white;
-  background-color: #242526; }
+  background: #76603a;
+  /* The Fallback */
+  background: rgba(118, 96, 58, 0.5); }
 
 h2 {
   /*  font-family: 'Oswald', sans-serif; */
@@ -14,8 +16,11 @@ h4 {
   padding: 0; }
 
 body {
+  background-image: url("cigar-background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'verdana', sans-serif;
-  color: #c04f2a; }
+  color: white; }
 
 a {
   color: lightblue; }
@@ -28,8 +33,10 @@ a {
   display: block;
   padding: 5px 5px 5px 5px;
   border: 1px solid lightgray;
-  background-color: #2d2d2d;
-  color: lightgray;
+  background: #76603a;
+  /* The Fallback */
+  background: rgba(118, 96, 58, 0.5);
+  color: white;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px; }
 

@@ -77,7 +77,7 @@ function display(response) {
                         data.score;
     commentsX.innerHTML = '<a href = "' + commentLink + '">' + numComments + ' comments</a>';
     dateCreatedX.innerHTML = "created: " + dateCreated;
-    postDivX.innerHTML = data.selftext;
+    postDivX.innerHTML = marked(data.selftext);
     showMoreX.onclick = function () {
       togglePost(postDivX);
     };
