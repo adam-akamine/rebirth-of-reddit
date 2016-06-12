@@ -100,10 +100,6 @@ function display(response) {
   }
 }
 
-function sanityCheck() {
-  console.log("Sanity Check Pass.");
-}
-
 function addAttributes(element, attributes){
   if(typeof attributes === "object"){
     Object.keys(attributes).forEach(function(attribute){
@@ -128,3 +124,5 @@ function togglePost(postdiv) {
     postdiv.style.display = 'block';
   }
 }
+
+console.log("hello");
