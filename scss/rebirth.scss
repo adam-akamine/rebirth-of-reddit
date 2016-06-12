@@ -1,3 +1,14 @@
+.heading {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  color:white;
+  background: rgb(118, 96, 58); /* The Fallback */
+  background: rgba(118, 96, 58, 0.5);
+  padding:20px;
+}
+
 .thread {
   padding: 25px 25px 0px 25px;
   border-bottom:2px solid white;
@@ -6,12 +17,12 @@
   //background-color: #242526;
 }
 
-h2 {
+h1 {
   /*  font-family: 'Oswald', sans-serif; */
   // font-family: 'Libre Baskerville', serif;
   font-family: 'Libre Baskerville', sans-serif;
-  margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 h4 {
   margin: 0;
@@ -27,7 +38,9 @@ body {
 }
 
 a {
-  color: lightblue; }
+  color: lightblue;
+  text-decoration: none;
+  }
 
 .score {
   margin: 0;
@@ -37,7 +50,6 @@ a {
   display: block;
   padding: 5px 5px 5px 5px;
   border: 1px solid lightgray;
-  //background-color: #2d2d2d;
   background: rgb(118, 96, 58); /* The Fallback */
   background: rgba(118, 96, 58, 0.5);
   color: white;
@@ -46,7 +58,7 @@ a {
 }
 
 .comments {
-  padding: 0px 0px 25px 0px; }
+  padding: 10px 0px 25px 0px; }
 
 button {
   ////background-color: #4CAF50;

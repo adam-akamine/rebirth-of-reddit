@@ -1,3 +1,14 @@
+.heading {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  color: white;
+  background: #76603a;
+  /* The Fallback */
+  background: rgba(118, 96, 58, 0.5);
+  padding: 20px; }
+
 .thread {
   padding: 25px 25px 0px 25px;
   border-bottom: 2px solid white;
@@ -5,10 +16,9 @@
   /* The Fallback */
   background: rgba(118, 96, 58, 0.5); }
 
-h2 {
+h1 {
   /*  font-family: 'Oswald', sans-serif; */
   font-family: 'Libre Baskerville', sans-serif;
-  margin: 0;
   padding: 0; }
 
 h4 {
@@ -23,7 +33,8 @@ body {
   color: white; }
 
 a {
-  color: lightblue; }
+  color: lightblue;
+  text-decoration: none; }
 
 .score {
   margin: 0;
@@ -41,7 +52,7 @@ a {
   -webkit-border-radius: 5px; }
 
 .comments {
-  padding: 0px 0px 25px 0px; }
+  padding: 10px 0px 25px 0px; }
 
 button {
   color: black;

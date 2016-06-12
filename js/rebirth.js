@@ -26,6 +26,7 @@ httpRequest.send(null);
 function display(response) {
   var mainPage = document.getElementById("mainPage");
   var data;
+  var heading;
   var thread;
   var postX;
   var titleX;
@@ -44,8 +45,9 @@ function display(response) {
 
   for(var i = 0; i < response.data.children.length; i++) {
     data = response.data.children[i].data;
+    heading = document.createElement("div");
     thread = document.createElement("div");
-    titleX = document.createElement("h2");
+    titleX = document.createElement("h1");
     authorX = document.createElement("h4");
     postX = document.createElement("div");
     scoreImage = document.createElement("img");
@@ -54,7 +56,11 @@ function display(response) {
     dateCreatedX = document.createElement("div");
     showMoreX = document.createElement("button");
     postDivX = document.createElement("div");
+    space = document.createElement("div");
 
+    space.innerHTML = "<br><br><br>";
+    heading.className = "heading";
+    heading.innerHTML = "/r/" + data.subreddit;
     thread.className = "thread";
     postDivX.className = "post";
     scoreImage.src = "cigarImage.jpg";
@@ -66,9 +72,13 @@ function display(response) {
     numComments = data.num_comments;
     dateCreated = getDate(data.created_utc);
     showMoreX.innerHTML = "show more";
+    showMoreX.className = "btnShowMore";
 
+    // $(".btnShowMore").click(function () {
+
+    // });
     titleX.innerHTML = data.title;
-    authorX.innerHTML = "Author: " + data.author;
+    authorX.innerHTML = "Author: <a href = 'https://www.reddit.com/user/" + data.author + "'>" + data.author + "</a>";
     postX.innerHTML = data.selftext;
     scoreX.innerHTML = 'score: ' +
                         '<img src = "cigar.png" ' +
@@ -82,12 +92,14 @@ function display(response) {
       togglePost(postDivX);
     };
 
+    mainPage.appendChild(heading);
+    mainPage.appendChild(space);
     mainPage.appendChild(thread);
     thread.appendChild(titleX);
     thread.appendChild(authorX);
     thread.appendChild(dateCreatedX);
     thread.appendChild(scoreX);
-    thread.appendChild(showMoreX);
+    //thread.appendChild(showMoreX);
     //thread.appendChild(postX);
     thread.appendChild(postDivX);
     //console.log("Appended " + postDivX.innerHTML);
@@ -107,7 +119,30 @@ function addAttributes(element, attributes){
 
 function getDate(timestamp) {
   var date = new Date(timestamp * 1000);
-  return date;
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = date.getFullYear();
+  var month = months[date.getMonth()];
+  var day = date.getDate();
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var time;
+
+  if(min < 10) {
+    min = '0' + min.toString();
+  }
+  if(hour > 12) {
+    if(hour < 13) {
+      hour = 12;
+    }
+    else {
+      hour = hour - 12;
+    }
+    time = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min + 'PM (HST)';
+  }
+  else {
+    time = day + ' ' + month + ' ' + year + ' ' + hour + ':' + min + 'AM (HST)';
+  }
+  return time;
 }
 
 function togglePost(postdiv) {
