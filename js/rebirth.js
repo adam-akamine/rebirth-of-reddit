@@ -56,8 +56,8 @@ function display(response) {
     postDivX = document.createElement("div");
 
     thread.className = "thread";
-    showMoreX.type = "show more";
     postX.className = "post";
+    postDivX.className = "post";
     scoreImage.src = "cigarImage.jpg";
     scoreImage.height = "25";
     scoreImage.width = "25";
@@ -79,8 +79,9 @@ function display(response) {
     dateCreatedX.innerHTML = "created: " + dateCreated;
     postDivX.innerHTML = data.selftext;
     postDivX.style.display = 'none';
-    showMoreX.onclick = function (postDivX) {
-      if(postDivX.style.display === 'block') {
+    showMoreX.onclick = function () {
+      if(postDivX.style.display == 'block') {
+        console.log("removing block.");
         postDivX.style.display = 'none';
       }
       else {
@@ -96,6 +97,7 @@ function display(response) {
     thread.appendChild(scoreX);
     thread.appendChild(showMoreX);
     thread.appendChild(postX);
+    thread.appendChild(postDivX);
     thread.appendChild(commentsX);
   }
 }
