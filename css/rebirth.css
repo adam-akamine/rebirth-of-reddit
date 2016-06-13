@@ -17,7 +17,6 @@
   background: rgba(118, 96, 58, 0.5); }
 
 h1 {
-  /*  font-family: 'Oswald', sans-serif; */
   font-family: 'Libre Baskerville', sans-serif;
   padding: 0; }
 
@@ -41,7 +40,7 @@ a {
   padding: 0; }
 
 .post {
-  display: block;
+  display: none;
   padding: 5px 5px 5px 5px;
   border: 1px solid lightgray;
   background: #76603a;
@@ -54,9 +53,11 @@ a {
 .comments {
   padding: 10px 0px 25px 0px; }
 
-button {
-  color: black;
-  font-size: 8px;
+.btnShowMore {
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  font-family: verdana, sans-serif;
   cursor: pointer;
-  width: 100px;
-  height: 20px; }
+  color: lightblue;
+  padding: 10px 0px 0px 0px; }

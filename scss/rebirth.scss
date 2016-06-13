@@ -14,12 +14,9 @@
   border-bottom:2px solid white;
   background: rgb(118, 96, 58); /* The Fallback */
   background: rgba(118, 96, 58, 0.5);
-  //background-color: #242526;
 }
 
 h1 {
-  /*  font-family: 'Oswald', sans-serif; */
-  // font-family: 'Libre Baskerville', serif;
   font-family: 'Libre Baskerville', sans-serif;
   padding: 0;
 }
@@ -29,7 +26,6 @@ h4 {
   padding: 0; }
 
 body {
-  // font-family: 'Libre Baskerville', serif;
   background-image: url('cigar-background.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -47,7 +43,7 @@ a {
   padding: 0; }
 
 .post {
-  display: block;
+  display: none;
   padding: 5px 5px 5px 5px;
   border: 1px solid lightgray;
   background: rgb(118, 96, 58); /* The Fallback */
@@ -60,11 +56,12 @@ a {
 .comments {
   padding: 10px 0px 25px 0px; }
 
-button {
-  ////background-color: #4CAF50;
-  color: black;
-  font-size: 8px;
+.btnShowMore {
+  border:none;
+  background-color: transparent;
+  font-size: 14px;
+  font-family:verdana, sans-serif;
   cursor: pointer;
-  width: 100px;
-  height: 20px;
+  color:lightblue;
+  padding: 10px 0px 0px 0px;
 }

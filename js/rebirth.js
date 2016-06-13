@@ -63,6 +63,7 @@ function display(response) {
     heading.innerHTML = "/r/" + data.subreddit;
     thread.className = "thread";
     postDivX.className = "post";
+    postDivX.id = "post" + i;
     scoreImage.src = "cigarImage.jpg";
     scoreImage.height = "25";
     scoreImage.width = "25";
@@ -74,9 +75,6 @@ function display(response) {
     showMoreX.innerHTML = "show more";
     showMoreX.className = "btnShowMore";
 
-    // $(".btnShowMore").click(function () {
-
-    // });
     titleX.innerHTML = data.title;
     authorX.innerHTML = "Author: <a href = 'https://www.reddit.com/user/" + data.author + "'>" + data.author + "</a>";
     postX.innerHTML = data.selftext;
@@ -88,9 +86,8 @@ function display(response) {
     commentsX.innerHTML = '<a href = "' + commentLink + '">' + numComments + ' comments</a>';
     dateCreatedX.innerHTML = "created: " + dateCreated;
     postDivX.innerHTML = marked(data.selftext);
-    showMoreX.onclick = function () {
-      togglePost(postDivX);
-    };
+
+    showMoreX.onclick = togglePost;
 
     mainPage.appendChild(heading);
     mainPage.appendChild(space);
@@ -99,11 +96,9 @@ function display(response) {
     thread.appendChild(authorX);
     thread.appendChild(dateCreatedX);
     thread.appendChild(scoreX);
-    //thread.appendChild(showMoreX);
-    //thread.appendChild(postX);
+    thread.appendChild(showMoreX);
     thread.appendChild(postDivX);
-    //console.log("Appended " + postDivX.innerHTML);
-    thread.appendChild(commentsX);
+    postDivX.appendChild(commentsX);
   }
 }
 
@@ -145,12 +140,30 @@ function getDate(timestamp) {
   return time;
 }
 
-function togglePost(postdiv) {
-  if(postdiv.style.display == 'block') {
-    postdiv.style.display = 'none';
+function togglePost() {
+  var posts = document.getElementsByClassName("post");
+  for(var i = 0; i < posts.length; i++) {
+    if(posts[i].style.display == 'block') {
+    console.log("removing display");
+    posts[i].style.display = 'none';
+    }
+    else {
+      console.log("assigning block style.");
+      posts[i].style.display = 'block';
+    }
   }
-  else {
-    console.log("assigning block style.");
-    postdiv.style.display = 'block';
+  toggleText();
+}
+
+function toggleText() {
+  var btns = document.getElementsByClassName("btnShowMore");
+  for(var i = 0; i < btns.length; i++) {
+    if(btns[i].textContent === "show more") {
+    btns[i].textContent = "show less";
+    }
+    else {
+      btns[i].textContent = "show more";
+    }
   }
+
 }
