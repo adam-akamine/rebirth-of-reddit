@@ -1,5 +1,3 @@
-//sanityCheck();
-
 var httpRequest;
 
 if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
@@ -23,6 +21,11 @@ httpRequest.onreadystatechange = function(){
 
 httpRequest.send(null);
 
+/**
+  * Displays the reddit data in custom view.
+  * @param response The parsed httpRequest responseText
+  * @returns null
+  */
 function display(response) {
   var mainPage = document.getElementById("mainPage");
   var data;
@@ -58,7 +61,7 @@ function display(response) {
     postDivX = document.createElement("div");
     space = document.createElement("div");
 
-    space.innerHTML = "<br><br><br>";
+    space.innerHTML = "<br><br>";
     heading.className = "heading";
     heading.innerHTML = "/r/" + data.subreddit;
     thread.className = "thread";
@@ -102,16 +105,11 @@ function display(response) {
   }
 }
 
-function addAttributes(element, attributes){
-  if(typeof attributes === "object"){
-    Object.keys(attributes).forEach(function(attribute){
-      element[attribute] = attributes[attribute];
-    });
-  }else{
-    throw new TypeError('attributes must be an Object');
-  }
-}
-
+/**
+  * Converts the timestamp to simplified Date format
+  * @param timestamp the Date in Unix timestamp form
+  * @returns time the formatted Date and time
+  */
 function getDate(timestamp) {
   var date = new Date(timestamp * 1000);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -140,6 +138,9 @@ function getDate(timestamp) {
   return time;
 }
 
+/**
+  * Toggles posts on/off
+  */
 function togglePost() {
   var posts = document.getElementsByClassName("post");
   for(var i = 0; i < posts.length; i++) {
@@ -155,6 +156,9 @@ function togglePost() {
   toggleText();
 }
 
+/**
+  * Toggles button to 'show more' or 'show less'
+  */
 function toggleText() {
   var btns = document.getElementsByClassName("btnShowMore");
   for(var i = 0; i < btns.length; i++) {
