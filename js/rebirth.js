@@ -6,7 +6,7 @@ if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
     httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-httpRequest.open('GET', 'http://www.reddit.com/r/cigars.json', true);
+httpRequest.open('GET', 'https://www.reddit.com/r/cigars.json', true);
 
 httpRequest.onreadystatechange = function(){
     if (httpRequest.readyState === 4) {
@@ -44,7 +44,7 @@ function display(response) {
   var commentLink;
   var numComments;
   var dateCreated;
-
+  var thumbnailX;
 
   for(var i = 0; i < response.data.children.length; i++) {
     data = response.data.children[i].data;
@@ -60,6 +60,14 @@ function display(response) {
     showMoreX = document.createElement("button");
     postDivX = document.createElement("div");
     space = document.createElement("div");
+    if(data.secure_media) {
+      if(data.secure_media.oembed) {
+        if(data.secure_media.oembed.thumbnail_url) {
+          thumbnailX = document.createElement("div");
+          thumbnailX.innerHTML = '<img src ="' + data.secure_media.oembed.thumbnail_url + '">';
+        }
+      }
+    }
 
     space.innerHTML = "<br><br>";
     heading.className = "heading";
@@ -96,6 +104,13 @@ function display(response) {
     mainPage.appendChild(space);
     mainPage.appendChild(thread);
     thread.appendChild(titleX);
+    if(data.secure_media) {
+      if(data.secure_media.oembed) {
+        if(data.secure_media.oembed.thumbnail_url) {
+          thread.appendChild(thumbnailX);
+        }
+      }
+    }
     thread.appendChild(authorX);
     thread.appendChild(dateCreatedX);
     thread.appendChild(scoreX);
