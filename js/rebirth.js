@@ -78,7 +78,7 @@ function display(response) {
     showMoreX.innerHTML = "show more";
     showMoreX.className = "btnShowMore";
 
-    titleX.innerHTML = data.title;
+    titleX.innerHTML = '<a href="' + commentLink + '">' + data.title + '</a>';
     authorX.innerHTML = "Author: <a href = 'https://www.reddit.com/user/" + data.author + "'>" + data.author + "</a>";
     postX.innerHTML = data.selftext;
     scoreX.innerHTML = 'score: ' +

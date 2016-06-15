@@ -3,20 +3,22 @@
   top: 0px;
   left: 0px;
   width: 100%;
-  color: white;
-  background: #76603a;
-  /* The Fallback */
-  background: rgba(118, 96, 58, 0.5);
+  color: gold;
+  background: linear-gradient(saddlebrown, burlywood);
   padding: 20px; }
 
 .thread {
   padding: 1px 25px 0px 25px;
-  background: #76603a;
-  /* The Fallback */
-  background: rgba(118, 96, 58, 0.5); }
+  background: linear-gradient(rgba(139, 69, 19, 0.45), rgba(222, 184, 135, 0.45)); }
 
-h1 {
+a {
+  color: lightblue;
+  text-decoration: none; }
+
+h1 > a {
   font-family: 'Libre Baskerville', sans-serif;
+  color: gold !important;
+  text-shadow: 2px 2px black;
   padding: 0; }
 
 h4 {
@@ -28,11 +30,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'verdana', sans-serif;
-  color: white; }
-
-a {
-  color: lightblue;
-  text-decoration: none; }
+  color: gold;
+  text-shadow: 1px 1px black; }
 
 .score {
   margin: 0;
@@ -42,10 +41,8 @@ a {
   display: none;
   padding: 5px 5px 5px 5px;
   border: 1px solid lightgray;
-  background: #76603a;
-  /* The Fallback */
-  background: rgba(118, 96, 58, 0.5);
-  color: white;
+  background: linear-gradient(rgba(139, 69, 19, 0.5), rgba(222, 184, 135, 0.5));
+  color: yellow;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px; }
 
@@ -59,4 +56,5 @@ a {
   font-family: verdana, sans-serif;
   cursor: pointer;
   color: lightblue;
+  text-shadow: 1px 1px black;
   padding: 10px 0px 0px 0px; }
